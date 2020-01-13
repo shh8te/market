@@ -7,8 +7,11 @@ import {
 } from 'react-router-dom';
 import Home from './components/Home';
 import Cart from './components/Cart';
+import { useSelector } from 'react-redux';
+import { getTotalQuantity } from './selectors';
 
 const App = () => {
+  const totalQuantity = useSelector(getTotalQuantity);
   return (
     <Router>
       <div>
@@ -18,7 +21,10 @@ const App = () => {
               <Link to="/">home</Link>
             </li>
             <li>
-              <Link to="/cart">cart</Link>
+              <Link to="/cart">
+                cart
+                <span>{totalQuantity}</span>
+              </Link>
             </li>
           </ul>
         </nav>
