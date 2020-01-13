@@ -1,6 +1,6 @@
 import { put, takeEvery, all } from 'redux-saga/effects';
 import { dataSuccess, dataFail } from '../actions';
-import { DATA_REQUEST, DATA_SUCCESS, DATA_FAIL } from '../constants';
+import { DATA_REQUEST } from '../constants';
 
 function* fetchData() {
   try {
