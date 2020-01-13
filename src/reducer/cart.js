@@ -1,8 +1,8 @@
 import { CART_ADD, CART_DELETE, CART_CLEAR } from '../constants';
+import { uniqueId } from 'lodash';
 
 const initialState = {
-  goods: {},
-  total: 0,
+  goods: [],
 };
 
 const cart = (state = initialState, action) => {
@@ -10,14 +10,22 @@ const cart = (state = initialState, action) => {
     case CART_ADD: {
       return {
         ...state,
-        goods: {
+        goods: [
           ...state.goods,
-          [action.payload.name]: state.goods[action.payload.name]
-            ? state.goods[action.payload.name] + 1
-            : 1,
-        },
-        total: Number(
-          (state.total + action.payload.price).toFixed(2),
+          {
+            image: action.payload.image,
+            name: action.payload.name,
+            price: action.payload.price,
+            id: uniqueId(),
+          },
+        ],
+      };
+    }
+    case CART_DELETE: {
+      return {
+        ...state,
+        goods: state.goods.filter(
+          item => item.id !== action.payload.id,
         ),
       };
     }

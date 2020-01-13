@@ -31,8 +31,9 @@ const Home = () => {
                   onClick={() =>
                     dispatch(
                       cartAdd(
+                        item.image,
                         item.name,
-                        Number(item.price.toFixed(2)),
+                        +item.price.toFixed(2),
                       ),
                     )
                   }

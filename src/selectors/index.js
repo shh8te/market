@@ -3,22 +3,23 @@ import { createSelector } from 'reselect';
 
 export const getHomeState = state => state.home;
 
-export const getDataStatus = state => getHomeState(state).dataStatus;
-export const getData = state => getHomeState(state).data;
+export const getDataStatus = state =>
+  getHomeState(state).dataStatus || '';
+
+export const getData = state =>
+  getHomeState(state).data || defaultArray;
 
 export const getCartState = state => state.cart;
 
-export const getCartGoods = state => getCartState(state).goods;
+export const getCartGoods = state =>
+  getCartState(state).goods || defaultArray;
 
-export const getTotalQuantity = createSelector(
-  getCartGoods,
-  goods => {
-    let totalquantity = 0;
+export const getTotalQuantity = state => getCartGoods(state).length;
 
-    for (let key in goods) {
-      totalquantity += goods[key];
-    }
+export const getTotalPrice = createSelector(getCartGoods, goods =>
+  goods.reduce((acc, item) => {
+    acc = +acc.toFixed(2) + +item.price.toFixed(2);
 
-    return totalquantity;
-  },
+    return +acc.toFixed(2);
+  }, 0),
 );

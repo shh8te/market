@@ -28,21 +28,22 @@ export const dataFail = () => {
   };
 };
 
-export const cartAdd = (name, price) => {
+export const cartAdd = (image, name, price) => {
   return {
     type: CART_ADD,
     payload: {
+      image,
       name,
       price,
     },
   };
 };
 
-export const cartDelete = name => {
+export const cartDelete = id => {
   return {
     type: CART_DELETE,
     payload: {
-      name,
+      id,
     },
   };
 };
