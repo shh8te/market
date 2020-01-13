@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { getDataStatus, getData } from '../selectors';
 import { useSelector, useDispatch } from 'react-redux';
-import { dataRequest } from '../actions';
+import { dataRequest, cartAdd } from '../actions';
 
 const Home = () => {
   const dataStatus = useSelector(getDataStatus);
@@ -11,6 +11,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(dataRequest());
   }, []);
+
   return (
     <div className="market__goods">
       <div className="green">{dataStatus}</div>
@@ -25,7 +26,14 @@ const Home = () => {
                 />
                 <h3 className="market__product-name">{item.name}</h3>
                 <p className="market__product-price">{item.price}</p>
-                <button type="button">add to cart</button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    dispatch(cartAdd(item.name, item.price))
+                  }
+                >
+                  add to cart
+                </button>
               </div>
             );
           })
