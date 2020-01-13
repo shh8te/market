@@ -16,7 +16,9 @@ const cart = (state = initialState, action) => {
             ? state.goods[action.payload.name] + 1
             : 1,
         },
-        total: state.total + action.payload.price,
+        total: Number(
+          (state.total + action.payload.price).toFixed(2),
+        ),
       };
     }
     default: {

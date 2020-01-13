@@ -29,7 +29,12 @@ const Home = () => {
                 <button
                   type="button"
                   onClick={() =>
-                    dispatch(cartAdd(item.name, item.price))
+                    dispatch(
+                      cartAdd(
+                        item.name,
+                        Number(item.price.toFixed(2)),
+                      ),
+                    )
                   }
                 >
                   add to cart
