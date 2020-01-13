@@ -1,7 +1,7 @@
 import React from 'react';
 import { getTotalPrice, getCartGoods } from '../selectors';
 import { useSelector, useDispatch } from 'react-redux';
-import { cartDelete } from '../actions';
+import { cartDelete, cartClear } from '../actions';
 
 const Cart = () => {
   const totalPrice = useSelector(getTotalPrice);
@@ -32,6 +32,9 @@ const Cart = () => {
         })}
       </div>
       <span>{totalPrice}</span>
+      <button type="button" onClick={() => dispatch(cartClear())}>
+        CLEAR CART!
+      </button>
     </div>
   );
 };

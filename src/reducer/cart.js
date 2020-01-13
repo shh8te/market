@@ -29,6 +29,9 @@ const cart = (state = initialState, action) => {
         ),
       };
     }
+    case CART_CLEAR: {
+      return initialState;
+    }
     default: {
       return state;
     }
