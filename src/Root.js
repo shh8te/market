@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
-import store from './store';
+import { store, persistor } from './store';
 import App from './App';
+import { PersistGate } from 'redux-persist/integration/react';
 
-class Root extends Component {
-  render() {
-    return (
-      <Provider store={store}>
+const Root = () => {
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
         <App />
-      </Provider>
-    );
-  }
-}
+      </PersistGate>
+    </Provider>
+  );
+};
 
 export default Root;
