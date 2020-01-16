@@ -5,7 +5,9 @@ import {
   CART_ADD,
   CART_DELETE,
   CART_CLEAR,
+  CART_REQUEST,
 } from '../constants';
+import { actionChannel } from 'redux-saga/effects';
 
 export const dataRequest = () => {
   return {
@@ -28,13 +30,22 @@ export const dataFail = () => {
   };
 };
 
-export const cartAdd = (image, name, price) => {
+export const cartRequest = (image, name, price) => {
   return {
-    type: CART_ADD,
+    type: CART_REQUEST,
     payload: {
       image,
       name,
       price,
+    }
+  }
+}
+
+export const cartAdd = (goods) => {
+  return {
+    type: CART_ADD,
+    payload: {
+      goods,
     },
   };
 };

@@ -5,6 +5,7 @@ export const DATA_FAIL = 'DATA_FAIL';
 export const CART_ADD = 'CART_ADD';
 export const CART_DELETE = 'CART_DELETE';
 export const CART_CLEAR = 'CART_CLEAR';
+export const CART_REQUEST = 'CART_REQUEST';
 
 export const defaultObject = Object.freeze({});
 export const defaultArray = Object.freeze([]);
