@@ -2,12 +2,15 @@ import {
   DATA_REQUEST,
   DATA_SUCCESS,
   DATA_FAIL,
+  CART_REQUEST_ADD,
   CART_ADD,
-  CART_DELETE,
+  CART_REQUEST_DELETE_ONE,
+  CART_DELETE_ONE,
+  CART_REQUEST_DELETE_ALL,
+  CART_DELETE_ALL,
+  CART_REQUEST_CLEAR,
   CART_CLEAR,
-  CART_REQUEST,
 } from '../constants';
-import { actionChannel } from 'redux-saga/effects';
 
 export const dataRequest = () => {
   return {
@@ -30,18 +33,18 @@ export const dataFail = () => {
   };
 };
 
-export const cartRequest = (image, name, price) => {
+export const cartRequestAdd = (image, name, price) => {
   return {
-    type: CART_REQUEST,
+    type: CART_REQUEST_ADD,
     payload: {
       image,
       name,
       price,
-    }
-  }
-}
+    },
+  };
+};
 
-export const cartAdd = (goods) => {
+export const cartAdd = goods => {
   return {
     type: CART_ADD,
     payload: {
@@ -50,12 +53,45 @@ export const cartAdd = (goods) => {
   };
 };
 
-export const cartDelete = id => {
+export const cartRequestDeleteOne = id => {
   return {
-    type: CART_DELETE,
+    type: CART_REQUEST_DELETE_ONE,
     payload: {
       id,
     },
+  };
+};
+
+export const cartDeleteOne = goods => {
+  return {
+    type: CART_DELETE_ONE,
+    payload: {
+      goods,
+    },
+  };
+};
+
+export const cartRequestDeleteAll = id => {
+  return {
+    type: CART_REQUEST_DELETE_ALL,
+    payload: {
+      id,
+    },
+  };
+};
+
+export const cartDeleteAll = goods => {
+  return {
+    type: CART_DELETE_ALL,
+    payload: {
+      goods,
+    },
+  };
+};
+
+export const cartRequestClear = () => {
+  return {
+    type: CART_REQUEST_CLEAR,
   };
 };
 

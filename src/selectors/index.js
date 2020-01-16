@@ -1,7 +1,7 @@
 import { defaultObject, defaultArray } from '../constants';
 import { createSelector } from 'reselect';
 
-export const getHomeState = state => state.home;
+export const getHomeState = state => state.homeReducer;
 
 export const getDataStatus = state =>
   getHomeState(state).dataStatus || '';
@@ -9,7 +9,7 @@ export const getDataStatus = state =>
 export const getData = state =>
   getHomeState(state).data || defaultArray;
 
-export const getCartState = state => state.cart;
+export const getCartState = state => state.cartReducer;
 
 export const getCartGoods = state =>
   getCartState(state).goods || defaultArray;
@@ -20,7 +20,7 @@ export const getTotalQuantity = createSelector(getCartGoods, goods =>
 
 export const getTotalPrice = createSelector(getCartGoods, goods =>
   goods.reduce((acc, item) => {
-    acc = +acc.toFixed(2) + +item.price.toFixed(2);
+    acc = +acc.toFixed(2) + +item.price.toFixed(2) * item.quantity;
 
     return +acc.toFixed(2);
   }, 0),

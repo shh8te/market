@@ -1,4 +1,9 @@
-import { CART_ADD, CART_DELETE, CART_CLEAR } from '../constants';
+import {
+  CART_ADD,
+  CART_DELETE_ONE,
+  CART_DELETE_ALL,
+  CART_CLEAR,
+} from '../constants';
 
 const initialState = {
   goods: [],
@@ -11,11 +16,14 @@ const cart = (state = initialState, action) => {
         goods: action.payload.goods,
       };
     }
-    case CART_DELETE: {
+    case CART_DELETE_ONE: {
       return {
-        goods: state.goods.filter(
-          item => item.id !== action.payload.id,
-        ),
+        goods: action.payload.goods,
+      };
+    }
+    case CART_DELETE_ALL: {
+      return {
+        goods: action.payload.goods,
       };
     }
     case CART_CLEAR: {

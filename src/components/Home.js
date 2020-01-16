@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { getDataStatus, getData } from '../selectors';
 import { useSelector, useDispatch } from 'react-redux';
-import { dataRequest, cartRequest } from '../actions';
+import { dataRequest, cartRequestAdd } from '../actions';
 
 const Home = () => {
   const dataStatus = useSelector(getDataStatus);
@@ -30,7 +30,7 @@ const Home = () => {
                   type="button"
                   onClick={() =>
                     dispatch(
-                      cartRequest(
+                      cartRequestAdd(
                         item.image,
                         item.name,
                         +item.price.toFixed(2),
