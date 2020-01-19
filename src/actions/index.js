@@ -12,9 +12,12 @@ import {
   CART_CLEAR,
 } from '../constants';
 
-export const dataRequest = () => {
+export const dataRequest = dealers => {
   return {
     type: DATA_REQUEST,
+    payload: {
+      dealers,
+    },
   };
 };
 

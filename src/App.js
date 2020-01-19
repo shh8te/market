@@ -10,7 +10,7 @@ import Cart from './components/Cart';
 import { useSelector } from 'react-redux';
 import { getTotalQuantity } from './selectors';
 
-const App = () => {
+const App = ({ dealers }) => {
   const totalQuantity = useSelector(getTotalQuantity);
   return (
     <Router>
@@ -31,7 +31,7 @@ const App = () => {
       </div>
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home dealers={dealers} />
         </Route>
         <Route path="/cart">
           <Cart />

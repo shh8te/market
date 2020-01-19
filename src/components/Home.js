@@ -3,13 +3,14 @@ import { getDataStatus, getData } from '../selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { dataRequest, cartRequestAdd } from '../actions';
 
-const Home = () => {
+const Home = ({ dealers }) => {
   const dataStatus = useSelector(getDataStatus);
   const data = useSelector(getData);
   const dispatch = useDispatch();
+  // const dealers = [];
 
   useEffect(() => {
-    dispatch(dataRequest());
+    dispatch(dataRequest(dealers));
   }, []);
 
   return (

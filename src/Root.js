@@ -4,11 +4,11 @@ import { store, persistor } from './store';
 import App from './App';
 import { PersistGate } from 'redux-persist/integration/react';
 
-const Root = () => {
+const Root = ({ dealers }) => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <App />
+        <App dealers={dealers} />
       </PersistGate>
     </Provider>
   );

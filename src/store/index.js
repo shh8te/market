@@ -27,9 +27,3 @@ export const persistor = persistStore(store);
 sagaMiddleware.run(rootSaga);
 
 window.store = store;
-
-// export default () => {
-//   let store = store;
-//   let persistor = persistStore(store);
-//   return { store, persistor };
-// };

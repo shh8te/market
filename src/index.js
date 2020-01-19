@@ -3,4 +3,8 @@ import ReactDOM from 'react-dom';
 import Root from 'src/Root';
 import './main.scss';
 
-ReactDOM.render(<Root />, document.getElementById('react'));
+window.start = dealers =>
+  ReactDOM.render(
+    <Root dealers={dealers} />,
+    document.getElementById('react'),
+  );
